@@ -1,6 +1,7 @@
 const letters = "BINGO".split("")
 
 function select_oninput(letter){
+	document.getElementById('code').innerHTML = "";
 	let col = letters.indexOf(letter);
 	let first_val = 1 + col*15;
 	let numbers = [];
@@ -37,7 +38,6 @@ function select_oninput(letter){
 }
 
 function random_onclick(){
-	document.getElementById('code').innerHTML = "";
 	let card = [[],[],[],[],[]];
 	for (let i=0; i<5; i++){
 		let col = [];
