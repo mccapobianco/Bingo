@@ -25,7 +25,9 @@
 	}
 </style>
 
-<body>
+<body>	
+	<b><i>***NOTE: This website is only for generating Bingo Cards. It does NOT provide a way to play. Be sure to print or draw your Bingo Card.***</i></b>
+	<br><br>
 	<center>
 	<table>
 		<thead>
@@ -38,6 +40,7 @@
 			</tr>
 		</thead>
 		<tbody id="table_body">
+
 			<tr>
 				<td><select oninput="select_oninput('B')" id="B1"></select></td>
 				<td><select oninput="select_oninput('I')" id="I1"></select></td>
@@ -77,7 +80,7 @@
 	</table>
 	</center>
 	<center><input type="submit" name="random" value="Random Card" onclick="random_onclick()"></center>
-	<br><br>
+	<br>
 	<center><input type="submit" name="gen" value="Generate Card Code" onclick="gen_onclick()"></center>
 	<center><p id="code"></p></center>
 </body>
