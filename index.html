@@ -84,8 +84,9 @@
 	</center>
 	<center><input type="submit" name="random" value="Random Card" onclick="random_onclick()"></center>
 	<br>
-	<center><input type="submit" name="gen" value="Generate Card Code" onclick="gen_onclick()"></center>
-	<center><p id="code"></p></center>
+	<center><input readonly="True" id="code" style="font-size:42px; width:75%; text-align: center;" for=copy></center>
+	<center><input type="submit" id="copy" value="Copy Code" onclick="copy_onclick()" style="visibility:hidden; "></center>
+	<center><input type="submit" id="gen" value="Generate Card Code" onclick="gen_onclick()"></center>
 </body>
 </html>
 <script src="./main.js"></script>

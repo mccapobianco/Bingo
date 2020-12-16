@@ -1,7 +1,9 @@
 const letters = "BINGO".split("")
 
 function select_oninput(letter){
-	document.getElementById('code').innerHTML = "";
+	document.getElementById('code').value = "";
+	document.getElementById('gen').style.visibility = 'visible';
+	document.getElementById('copy').style.visibility = 'hidden';
 	let col = letters.indexOf(letter);
 	let first_val = 1 + col*15;
 	let numbers = [];
@@ -103,10 +105,21 @@ function encode(){
 
 function gen_onclick(){
 	let code = encode()
-	if (code != undefined)
-		document.getElementById('code').innerHTML = encode();
-	else
-		document.getElementById('code').innerHTML = "Error: Card must be filled";
+	if (code != undefined){
+		document.getElementById('code').value = encode();
+		document.getElementById('copy').style.visibility = 'visible';
+		document.getElementById('gen').style.visibility = 'hidden';
+	}else{
+		document.getElementById('code').value = "Error: Card must be filled";
+	}
+}
+
+function copy_onclick(){
+	let code = document.getElementById('code');
+	code.select();
+	document.execCommand("copy");
+	alert(`"${code.value}" copied to clipboard.`);
+
 }
 
 select_oninput("B");
