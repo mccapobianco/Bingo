@@ -125,7 +125,7 @@ function copy_onclick(){
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
  	let selects = document.getElementsByTagName('select');
  	for (let i=0; i<selects.length; i++) {
- 		selects[i].style.fontSize = "3px";
+ 		selects[i].style.fontSize = "12px";
  	}
 }
 console.log(document.getElementsByTagName('select'))
