@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Bingo Card Selector</title>
+	<meta name="author" content="Michael Capobianco">
+</head>
+<style type="text/css">
+	table, th, td {
+		border: 1px solid black;
+	}
+	table {
+		border-collapse: collapse;
+	}
+	th, td {
+		width: 60px;
+		height: 60px;
+	}
+	p {
+		font-size:42px;
+	}
+	.white {
+		height:100%;
+		width:100%;
+		background-color:#ffffff;
+	}
+	.red {
+		height:100%;
+		width:100%;
+		background-color:#ff0000;
+	}
+
+</style>
+
+<body>
+	<center>
+	<table>
+		<thead>
+			<tr>
+				<th>B</th>
+				<th>I</th>
+				<th>N</th>
+				<th>G</th>
+				<th>O</th>
+			</tr>
+		</thead>
+		<tbody id="table_body">
+
+			<tr>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('B1')" id="B1"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('I1')" id="I1"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('N1')" id="N1"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('G1')" id="G1"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('O1')" id="O1"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('B2')" id="B2"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('I2')" id="I2"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('N2')" id="N2"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('G2')" id="G2"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('O2')" id="O2"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('B3')" id="B3"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('I3')" id="I3"></td>
+				<td><input type="submit" class="white" value="FREE" onclick="square_onclick('N3')" id="N3"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('G3')" id="G3"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('O3')" id="O3"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('B4')" id="B4"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('I4')" id="I4"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('N4')" id="N4"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('G4')" id="G4"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('O4')" id="O4"></td>
+			</tr>
+			<tr>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('B5')" id="B5"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('I5')" id="I5"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('N5')" id="N5"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('G5')" id="G5"></td>
+				<td><input type="submit" class="white" value="" onclick="square_onclick('O5')" id="O5"></td>
+			</tr>
+		</tbody>
+	</table>
+	</center>
+	<br>
+	<center><input type="submit" id="clear" value="Clear Board" onclick="clear_onclick()"></center>
+	<br>
+	<center><input id="code" style="font-size:42px; width:75%; text-align: center;" for=code_box></center>
+	<center><input type="submit" id="code_box" value="Enter Code" onclick="code_onclick()"></center>
+	<center><a href="./index.html">Back to Board Creator</a></center>
+</body>
+</html>
+<script>
+	console.log('111112222233-334444455555');
+	function code_onclick(){
+		let code = document.getElementById('code').value;
+		let regex = /^[1-9a-f]{12}-[1-9a-f]{12}$/g;
+		let is_valid = [...code.matchAll(regex)].length != 0;
+		if (is_valid){
+			let idx = 0;
+			for (let row=0; row<5; row++){
+				for (let col=0; col<5; col++){
+					document.getElementById(`${'BINGO'.charAt(col)}${row+1}`).value = parseInt('0x'+code.charAt(idx))+15*col;
+					idx++;
+				}
+			}
+			document.getElementById('N3').value = 'FREE';
+		} else {
+			alert("Invalid Code");
+		}
+	}
+
+	function clear_onclick(){
+		let array = document.getElementsByClassName('red');
+		while (array.length > 0){
+			array = document.getElementsByClassName('red');
+			array[0].className = 'white';
+		}
+	}
+
+	function square_onclick(id){
+		let button = document.getElementById(id);
+		// console.log(button.style["background-color"])
+		if (button.className == "white"){
+			button.className = 'red';
+		} else {
+			button.className = 'white';
+		}
+	}
+</script>
